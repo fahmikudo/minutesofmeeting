@@ -19,8 +19,8 @@
 	{{-- <script src="{{ asset('js/sb-admin-2.js')}}"></script> --}}
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"> --}}
 
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
@@ -30,7 +30,16 @@
 	<link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/faza.css') }}" rel="stylesheet"/>
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"/>
-	<link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" type="image/x-icon"/>
+    
+    <style>
+        .image {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

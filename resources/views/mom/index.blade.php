@@ -32,10 +32,10 @@
                             <thead>
                                 <tr>
                                     <th>Agenda</th>
-                                    <th>Tanggal Waktu</th>
+                                    <th width="120">Tanggal Waktu</th>
                                     <th>Lokasi</th>
                                     <th>Kesimpulan</th>
-                                    <th class="text-right"></th>
+                                    <th width="200" class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,8 +46,22 @@
                                     <td>{{ $mt->lokasi }}</td>
                                     <td>{{ $mt->kesimpulan }}</td>
                                     <td class="text-right">
-                                    <a class="detail-info" href=""><button class="btn btn-primary"><i class="fa fa-edit fa-fw"></i>Edit</button></a>
-                                    <a class="detail-info" href="{{ route('daftar-peserta-index', $mt->id_mom) }}"><button class="btn btn-default"><i class="fa fa-cogs fa-fw"></i>Manage</button></a>
+                                        <a class="detail-info" href="#">
+                                            <button 
+                                                class="btn btn-primary"
+                                                onclick="editModal('{{ $mt->id_mom }}')"
+                                                data-toggle="modal"
+                                                data-target="#editModal">
+                                                <i class="fa fa-edit fa-fw"></i>
+                                                Edit
+                                            </button>
+                                        </a>
+                                        <a class="detail-info" href="{{ route('daftar-peserta-index', $mt->id_mom) }}">
+                                            <button class="btn btn-default">
+                                                <i class="fa fa-cogs fa-fw"></i>
+                                                Manage
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -98,8 +112,69 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal Create -->
+            <div class="modal fade" id="editModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <form action="{{ route('mom-put') }}" method="POST">
+                            @csrf
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Tambah MoM</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <input type="hidden" name="id-mom" id="edit-id-mom">
+
+                                    <label for="selectProject">Pilih Project</label>
+                                    <select class="form-control" name="id-project" id="sel1">
+                                        @foreach ($project as $pr)
+                                            <option 
+                                                value="{{ $pr->id_project }}"
+                                                class="project" 
+                                                id="project-{{ $pr->id_project }}">{{ $pr->nama_project }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <label for="agenda">Agenda</label>
+                                    <input type="text" class="form-control" name="edit-agenda" required id="edit-agenda" placeholder="Agenda">
+
+                                    <label for="tanggalWaktu">Tanggal</label>
+                                    <input type="date" class="form-control" name="edit-tanggal" required id="edit-tanggal">
+
+                                    <label for="lokasi">Lokasi</label>
+                                    <input type="text" class="form-control" name="edit-lokasi" required id="edit-lokasi">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
+<script>
+    function editModal(idMom) {
+        $.ajax({
+            type: "GET",
+            url: "{{ url('/detail-mom/') }}"+'/'+idMom,
+            data: "data",
+            dataType: "json",
+            success: function (response) {
+                // console.log(response[0].created_at);
+                $('.project').removeAttr('selected');
+                $('#project-'+response[0].id_project).attr('selected', 'true');
+                $('#edit-id-mom').val(response[0].id_mom);
+                $('#edit-agenda').val(response[0].agenda);
+                $('#edit-tanggal').val(response[0].tanggal_waktu);
+                $('#edit-lokasi').val(response[0].lokasi);
+            }
+        });
+    }
+</script>
 @endsection

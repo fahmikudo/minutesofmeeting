@@ -86,9 +86,9 @@ class DaftarPesertaController extends Controller
     {
         $keyword = $_GET['keyword'];
         $data = DaftarPeserta::Search($keyword, 5);
-        return view('daftar-peserta.index', [
+        return view('mom.daftarpeserta.index', [
             'id' => $id,
-            'daftar-peserta' => $data
+            'data' => $data
         ]);
     }
 }

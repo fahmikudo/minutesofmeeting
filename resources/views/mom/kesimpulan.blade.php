@@ -17,13 +17,28 @@
                     <ul class="nav nav-tabs">
                         <li><a href="{{ route('daftar-peserta-index', $id) }}">Daftar Peserta</a></li>
                         <li><a href="{{ route('pokok-bahasan-index', $id) }}">Pokok Bahasan</a></li>
-                        <li><a href="{{ route('detail-pokok-bahasan-index', $id) }}">Detail Pokok Bahasan</a></li>
                         <li><a href="{{ route('gallery-index', $id) }}">Gallery</a></li>
                         <li class="active"><a href="#">Kesimpulan</a></li>
                     </ul>
                 </div>
                 <div class="panel-body">
-                    <h1>Daftar Peserta</h1>
+                    <form action="{{ route('mom-publish-kesimpulan') }}" method="POST">
+                        @csrf
+                        <div class="form-group"> 
+                            <input type="hidden" name="id-mom" value="{{ $id }}" required>
+
+                            <label for="kesimpulan">Kesimpulan</label>
+                            <textarea 
+                                class="form-control" 
+                                name="kesimpulan" 
+                                required 
+                                id="kesimpulan" 
+                                placeholder="Kesimpulan Meeting"></textarea>
+                            <div style="text-align: right; margin-top: 20px;">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

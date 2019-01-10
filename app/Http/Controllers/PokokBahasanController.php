@@ -9,7 +9,7 @@ class PokokBahasanController extends Controller
 {
     public function index($id)
     {
-        $data = PokokBahasan::paginate(5);
+        $data = PokokBahasan::where('id_mom', $id)->paginate(5);
         return view('mom.pokokbahasan.index', [
             'id' => $id,
             'data' => $data
@@ -42,7 +42,7 @@ class PokokBahasanController extends Controller
         }
         else
         {
-            echo 'Edit Not Found';
+            echo 'publich Not Found';
         }
     }
 
@@ -65,9 +65,28 @@ class PokokBahasanController extends Controller
         }
     }
 
+    public function remove(Request $request, $id)
+    {
+        $idPokokBahasan = $request['id-pokok-bahasan'];
+        $rest = PokokBahasan::Remove($idPokokBahasan);
+        if ($rest)
+        {
+            return redirect(route('pokok-bahasan-index', $id));
+        }
+        else
+        {
+            return redirect(route('errors/404'));
+        }
+    }
 
-
-
-
+    public function search($id)
+    {
+        $keyword = $_GET['keyword'];
+        $data = PokokBahasan::Search($id, $keyword, 5);
+        return view('mom.pokokbahasan.index', [
+            'id' => $id,
+            'data' => $data
+        ]);
+    }
 
 }

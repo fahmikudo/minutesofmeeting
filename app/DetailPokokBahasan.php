@@ -8,9 +8,11 @@ class DetailPokokBahasan extends Model
 {
     protected $table = 'detail_pokok_bahasan';
 
-    public function scopeGet($query)
+    public function scopeGetAll($query, $idPokokBahasan)
     {
-        return $this->get();
+        return $this
+                ->where('id_pokok_bahasan', $idPokokBahasan)
+                ->get();
     }
 
     public function scopeGetById($query, $idDetailPokokBahasan)
@@ -26,10 +28,10 @@ class DetailPokokBahasan extends Model
                 ->insert($data);
     }
 
-    public function scopeEdit($query, $data, $id, $idPokokBahasan)
+    public function scopeEdit($query, $data, $idPokokBahasan)
     {
         return $this
-                ->where('id_detail_pokok_bahasan', $id, $idPokokBahasan)
+                ->where('id_detail_pokok_bahasan', $idPokokBahasan)
                 ->update($data);
     }
 

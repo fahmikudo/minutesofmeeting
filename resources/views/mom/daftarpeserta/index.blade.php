@@ -17,7 +17,6 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#">Daftar Peserta</a></li>
                         <li><a href="{{ route('pokok-bahasan-index', $id) }}">Pokok Bahasan</a></li>
-                        <li><a href="{{ route('detail-pokok-bahasan-index', $id) }}">Detail Pokok Bahasan</a></li>
                         <li><a href="{{ route('gallery-index', $id) }}">Gallery</a></li>
                         <li><a href="{{ route('mom-kesimpulan', $id) }}">Kesimpulan</a></li>
                     </ul>
@@ -69,12 +68,12 @@
                                                             <i class="fa fa-edit fa-fw"></i>Edit
                                                         </button>
                                                     </a>
-                                                    <form id="deletePeserta" action="{{ route('daftar-peserta-remove', $id) }}" method="POST" style="display: none;">
+                                                    <form id="deletePeserta{{ $dt->id_daftar_peserta }}" action="{{ route('daftar-peserta-remove', $id) }}" method="POST" style="display: none;">
                                                         {{ csrf_field() }}
                                                         <input type="hidden" value="{{ $dt->id_daftar_peserta }}" name="id-daftar-peserta" id="id-daftar-peserta">
                                                     </form>
                                                     <a href="{{ route('daftar-peserta-remove', $id) }}" onclick="event.preventDefault();
-                                                        document.getElementById('deletePeserta').submit();">
+                                                        document.getElementById('deletePeserta'+{{ $dt->id_daftar_peserta }}).submit();">
                                                         <button class="btn btn-danger">
                                                             <i class="fa fa-trash fa-fw"></i>Delete
                                                         </button>

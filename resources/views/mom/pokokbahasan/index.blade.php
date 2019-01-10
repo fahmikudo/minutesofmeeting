@@ -17,7 +17,6 @@
                     <ul class="nav nav-tabs">
                         <li><a href="{{ route('daftar-peserta-index', $id) }}">Daftar Peserta</a></li>
                         <li class="active"><a href="#">Pokok Bahasan</a></li>
-                        <li><a href="{{ route('detail-pokok-bahasan-index', $id) }}">Detail Pokok Bahasan</a></li>
                         <li><a href="{{ route('gallery-index', $id) }}">Gallery</a></li>
                         <li><a href="{{ route('mom-kesimpulan', $id) }}">Kesimpulan</a></li>
                     </ul>
@@ -25,7 +24,7 @@
                         <br>
                         <div class="panel-body top-operation">
                             <div class="col-lg-5 search-head-outer">
-                                <form class="form-inline" role="form" method="GET" action="#">
+                                <form class="form-inline" role="form" method="GET" action="{{ route('pokok-bahasan-search', $id) }}">
                                     <div class="input-group search-head">
                                         <input type="text" class="form-control input-sm" name="keyword" placeholder="Pokok Bahasan">
                                         <div class="input-group-btn">
@@ -52,6 +51,11 @@
                                                 <td>{{ $dt->no }}</td>
                                                 <td>{{ $dt->pokok_bahasan }}</td>
                                                 <td class="text-right">
+                                                    <a class="detail-info" href="{{ route('detail-pokok-bahasan-index', [$id, $dt->id_pokok_bahasan]) }}">
+                                                        <button class="btn btn-success">
+                                                            <i class="fa fa-plus fa-fw"></i>Detail Pokok Bahasan
+                                                        </button>
+                                                    </a>
                                                     <a class="detail-info" href="#">
                                                         <button
                                                             onclick="editModal('{{ $dt->id_pokok_bahasan }}')"
@@ -61,12 +65,16 @@
                                                             <i class="fa fa-edit fa-fw"></i>Edit
                                                         </button>
                                                     </a>
-                                                    <form id="deletePokokBahasan" action="#" method="POST" style="display: none;">
+                                                    <form id="deletePokokBahasan{{ $dt->id_pokok_bahasan }}" action="{{ route('pokok-bahasan-remove', $id) }}" method="POST" style="display: none;">
                                                         {{ csrf_field() }}
-                                                        <input type="hidden" value="{{ $dt->id_pokok_bahasan }}" name="id-pokok-bahasan" id="id-pokok-bahasan">
+                                                        <input 
+                                                            type="hidden" 
+                                                            value="{{ $dt->id_pokok_bahasan }}" 
+                                                            name="id-pokok-bahasan" 
+                                                            id="id-pokok-bahasan">
                                                     </form>
-                                                    <a href="#" onclick="event.preventDefault();
-                                                        document.getElementById('deletePokokBahasan').submit();">
+                                                    <a href="{{ route('pokok-bahasan-remove', $id) }}" onclick="event.preventDefault();
+                                                        document.getElementById('deletePokokBahasan'+{{ $dt->id_pokok_bahasan }}).submit();">
                                                         <button class="btn btn-danger">
                                                             <i class="fa fa-trash fa-fw"></i>Delete
                                                         </button>
@@ -128,6 +136,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <input type="hidden" name="id-pokok-bahasan" id="edit-id-pokok-bahasan">
+                                        
                                         <label for="no">Nomor</label>
                                         <input
                                             type="text"

@@ -21,6 +21,13 @@ class PokokBahasan extends Model
                 ->get();
     }
 
+    public function scopeGetByMom($query, $id_mom)
+    {
+        return $this
+                ->where('id_mom', $id_mom)
+                ->get();
+    }
+
     public function scopeAdd($query, $data)
     {
         return $this
@@ -41,11 +48,14 @@ class PokokBahasan extends Model
                 ->delete();
     }
 
-    public function scopeSearch($query, $keyword, $limit)
+    public function scopeSearch($query, $id, $keyword, $limit)
     {
         return $this
                 ->where(
-                    'nama','like',"%$keyword%"
+                    'pokok_bahasan','like',"%$keyword%"
+                )
+                ->where(
+                    'id_mom', $id
                 )
                 ->simplePaginate($limit);
     }

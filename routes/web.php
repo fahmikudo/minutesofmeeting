@@ -35,10 +35,16 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('mom')->group(function() {
         //tampilan
-        Route::get('/', 'MomController@index')->name('mom-index');
+        Route::get('/', 'MoMController@index')->name('mom-index');
         Route::get('create', 'MoMController@add')->name('mom-add');
         Route::get('edit/{id}', 'MoMController@edit')->name('mom-edit');
         Route::get('{id}/kesimpulan', 'MoMController@kesimpulan')->name('mom-kesimpulan');
+
+        //crud
+        Route::post('/publish', 'MoMController@publish')->name('mom-publish');
+        Route::post('/put', 'MoMController@put')->name('mom-put');
+        Route::post('/remove', 'MoMController@remove')->name('mom-remove');
+        Route::post('/publish-kesimpulan', 'MoMController@publishKesimpulan')->name('mom-publish-kesimpulan');
 
         //daftar peserta
         Route::prefix('{id}/daftar-peserta')->group(function(){
@@ -54,27 +60,33 @@ Route::middleware('auth')->group(function () {
         //pokok bahasan
         Route::prefix('{id}/pokok-bahasan')->group(function(){
             Route::get('/', 'PokokBahasanController@index')->name('pokok-bahasan-index');
+            Route::get('/search','PokokBahasanController@search')->name('pokok-bahasan-search');
 
             //crud
             Route::post('/publish', 'PokokBahasanController@publish')->name('pokok-bahasan-publish');
             Route::post('/put', 'PokokBahasanController@put')->name('pokok-bahasan-put');
             Route::post('/remove', 'PokokBahasanController@remove')->name('pokok-bahasan-remove');
-        });
 
-        //detail pokok bahasan
-        Route::prefix('{id}/detail-pokok-bahasan')->group(function(){
-            Route::get('/', 'DetailPokokBahasanController@index')->name('detail-pokok-bahasan-index');
+            //detail pokok bahasan
+            Route::prefix('{idPokokBahasan}/detail-pokok-bahasan')->group(function(){
+                Route::get('/', 'DetailPokokBahasanController@index')->name('detail-pokok-bahasan-index');
+
+                //crud
+                Route::post('/publish', 'DetailPokokBahasanController@publish')->name('detail-pokok-bahasan-publish');
+                Route::post('/put', 'DetailPokokBahasanController@put')->name('detail-pokok-bahasan-put');
+                Route::post('/remove', 'DetailPokokBahasanController@remove')->name('detail-pokok-bahasan-remove');
+            });
         });
 
         //gallery
         Route::prefix('{id}/gallery')->group(function(){
             Route::get('/', 'GalleryController@index')->name('gallery-index');
-        });
 
-        //crud
-        Route::post('/publish', 'MoMController@publish')->name('mom-publish');
-        Route::post('/put', 'MoMController@put')->name('mom-put');
-        Route::post('/remove', 'MoMController@remove')->name('mom-remove');
+            //crud
+            Route::post('/publish', 'GalleryController@publish')->name('gallery-publish');
+            Route::post('/put', 'GalleryController@put')->name('gallery-put');
+            Route::post('/remove', 'GalleryController@remove')->name('gallery-remove');
+        });
 
     });
 
@@ -83,8 +95,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/{idPeserta}', 'DaftarPesertaController@byId')->name('daftar-peserta-by-id');
     });
 
+    Route::prefix('detail-mom')->group(function () {
+        Route::get('/{idMom}', 'MoMController@byId')->name('mom-by-id');
+    });
+
     Route::prefix('pokok-bahasan')->group(function () {
         Route::get('/{idPokokBahasan}', 'PokokBahasanController@byId')->name('pokok-bahasan-by-id');
+    });
+
+    Route::prefix('detail-pokok-bahasan')->group(function () {
+        Route::get('/{idDetailPokokBahasan}', 'DetailPokokBahasanController@byId')->name('detail-pokok-bahasan-by-id');
     });
 
 });

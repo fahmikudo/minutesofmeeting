@@ -20,6 +20,12 @@ class MoMController extends Controller
         ]);
     }
 
+    public function byId($idMom)
+    {
+        $data = Mom::GetById($idMom);
+        return json_encode($data);
+    }
+
     public function add()
     {
         $data = Project::get();
@@ -77,15 +83,34 @@ class MoMController extends Controller
     public function put(Request $request)
     {
         $id = $request['id-mom'];
-        $agenda = $request['agenda'];
-        $tanggal = $request['tanggal'];
-        $lokasi = $request['lokasi'];
-        $kesimpulan = $request['kesimpulan'];
+        $idProject = $request['id-project'];
+        $agenda = $request['edit-agenda'];
+        $tanggal = $request['edit-tanggal'];
+        $lokasi = $request['edit-lokasi'];
+        // $kesimpulan = $request['edit-kesimpulan'];
 
         $data = [
             'agenda' => $agenda,
             'tanggal_waktu' => $tanggal,
             'lokasi' => $lokasi,
+            // 'kesimpulan' => $kesimpulan,
+            'id_project' => $idProject
+        ];
+        $rest = MoM::Edit($data, $id);
+        if ($rest) {
+            return redirect(route('mom-index'));
+        } else {
+            return redirect(route('errors/404'));
+        }
+
+    }
+
+    public function publishKesimpulan(Request $request)
+    {
+        $id = $request['id-mom'];
+        $kesimpulan = $request['kesimpulan'];
+
+        $data = [
             'kesimpulan' => $kesimpulan
         ];
         $rest = MoM::Edit($data, $id);
