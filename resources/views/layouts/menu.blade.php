@@ -4,15 +4,15 @@
             <li>
                 <a href="{{ route('home') }}"><i class="fa fa-home fa-fw"></i> Dashboard </a>
             </li>
-            <li class="separator"></li>
             <li>
-                <a href="{{ route('project-index')."?page=1" }}"><i class="fa fa-user fa-fw"></i> Project </a>
+                <a href="{{ route('user-index') }}"><i class="fa fa-users fa-fw"></i> Users </a>
             </li>
-            <li class="separator"></li>
             <li>
-                <a href="{{ route('mom-index') }}"><i class="fa fa-user fa-fw"></i> MoM </a>
+                <a href="{{ route('project-index')."?page=1" }}"><i class="fa fa-star fa-fw"></i> Project </a>
             </li>
-            
+            <li>
+                <a href="{{ route('mom-index') }}"><i class="fa fa-th-list fa-fw"></i> MoM </a>
+            </li>
         </ul>
     </div>
 </div>

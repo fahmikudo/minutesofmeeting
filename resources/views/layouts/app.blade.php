@@ -55,19 +55,26 @@
             </div>
         @include('layouts/menu')
             <ul class="nav navbar-top-links navbar-right">
-                <li class="pull-right" title="Logout">
+
+                {{-- <li class="pull-left">
+                    <a href="#">
+                        <i class="fa fa-gear fa-lg" style="margin-top: 10px;"></i>
+                        Profile
+                    </a>
+                </li> --}}
+                
+                <li class="pull-left" title="Logout">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
 
                     </form>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        <i class="glyphicon glyphicon-off"></i>
+                        <i class="fa fa-power-off fa-lg" style="margin-top: 10px;"></i>
+                        Logout
                     </a>
-                    {{-- <a href="#">
-                        <i class="glyphicon glyphicon-off"></i>
-                    </a> --}}
                 </li>
+                    
             </ul>
         </nav>
         <main class="py-4">

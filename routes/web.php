@@ -20,12 +20,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::prefix('user')->group(function () {
+        //tampilan
+        Route::get('/', 'UserController@index')->name('user-index');
+        Route::get('/search','UserController@search')->name('user-search');
+        Route::get('/{iduser}', 'UserController@byId')->name('user-by-id');
+
+        //crud
+        Route::post('/publish', 'UserController@publish')->name('user-publish');
+        Route::post('/put', 'UserController@put')->name('user-put');
+        Route::post('/remove', 'UserController@remove')->name('user-remove');
+    });
+
     Route::prefix('project')->group(function () {
         //tampilan
         Route::get('/', 'ProjectController@index')->name('project-index');
         Route::get('/search','ProjectController@search')->name('project-search');
-        Route::get('create', 'ProjectController@add')->name('project-add');
-        Route::get('edit/{id}', 'ProjectController@edit')->name('project-edit');
+        // Route::get('create', 'ProjectController@add')->name('project-add');
+        // Route::get('edit/{id}', 'ProjectController@edit')->name('project-edit');
         Route::get('/{idProject}', 'ProjectController@byId')->name('project-by-id');
 
         //crud

@@ -32,26 +32,30 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Project</th>
                                     <th class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 1; ?>
                                 @foreach ($project as $pr)
-                                <tr>
-                                    <td>{{ $pr->nama_project }}</td>
-                                    <td class="text-right">
-                                        <a class="detail-info" href="#">
-                                            <button
-                                                class="btn btn-primary"
-                                                onclick="editModal('{{ $pr->id_project }}')"
-                                                data-toggle="modal"
-                                                data-target="#editModal">
-                                                <i class="fa fa-edit fa-fw"></i>Edit
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $i }}</td>
+                                        <td>{{ $pr->nama_project }}</td>
+                                        <td class="text-right">
+                                            <a class="detail-info" href="#">
+                                                <button
+                                                    class="btn btn-primary"
+                                                    onclick="editModal('{{ $pr->id_project }}')"
+                                                    data-toggle="modal"
+                                                    data-target="#editModal">
+                                                    <i class="fa fa-edit fa-fw"></i>Edit
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php $i++; ?>
                                 @endforeach
                             </tbody>
                         </table>
