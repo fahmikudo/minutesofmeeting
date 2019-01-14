@@ -26,6 +26,12 @@ class MoMController extends Controller
         return json_encode($data);
     }
 
+    public function byProject($idProject)
+    {
+        $data = Mom::GetByProject($idProject);
+        return json_encode($data);
+    }
+
     public function add()
     {
         $data = Project::get();

@@ -20,6 +20,13 @@ class DaftarPeserta extends Model
                 ->get();
     }
 
+    public function scopeGetByMom($query, $idMom)
+    {
+        return $this
+                ->where('id_mom', $idMom)
+                ->get();
+    }
+
     public function scopeAdd($query, $data)
     {
         return $this

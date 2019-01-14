@@ -13,6 +13,9 @@
             <li>
                 <a href="{{ route('mom-index') }}"><i class="fa fa-th-list fa-fw"></i> MoM </a>
             </li>
+            <li>
+                <a href="{{ route('result-index') }}"><i class="fa fa-cogs fa-fw"></i> Results </a>
+            </li>
         </ul>
     </div>
 </div>

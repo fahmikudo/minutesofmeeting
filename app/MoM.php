@@ -19,7 +19,15 @@ class MoM extends Model
     public function scopeGetByid($query, $id)
     {
         return $this
+                ->join('users', 'users.id', '=', 'mom.id')
                 ->where('id_mom', $id)
+                ->get();
+    }
+
+    public function scopeGetByProject($query, $idProject)
+    {
+        return $this
+                ->where('id_project', $idProject)
                 ->get();
     }
 

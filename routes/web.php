@@ -32,6 +32,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/remove', 'UserController@remove')->name('user-remove');
     });
 
+    Route::prefix('result')->group(function () {
+        Route::get('/', 'ResultController@index')->name('result-index');
+
+        //result
+        Route::post('/create', 'ResultController@create')->name('result-create');
+    });
+
     Route::prefix('project')->group(function () {
         //tampilan
         Route::get('/', 'ProjectController@index')->name('project-index');
@@ -45,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/put', 'ProjectController@put')->name('project-put');
         Route::post('/remove', 'ProjectController@remove')->name('project-remove');
     });
+
     Route::prefix('mom')->group(function() {
         //tampilan
         Route::get('/', 'MoMController@index')->name('mom-index');
@@ -109,6 +117,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('detail-mom')->group(function () {
         Route::get('/{idMom}', 'MoMController@byId')->name('mom-by-id');
+        Route::get('/by-project/{idProject}', 'MoMController@byProject')->name('mom-by-project');
     });
 
     Route::prefix('pokok-bahasan')->group(function () {

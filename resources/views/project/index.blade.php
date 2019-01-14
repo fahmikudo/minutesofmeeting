@@ -50,9 +50,16 @@
                                                     onclick="editModal('{{ $pr->id_project }}')"
                                                     data-toggle="modal"
                                                     data-target="#editModal">
-                                                    <i class="fa fa-edit fa-fw"></i>Edit
+                                                    <i class="fa fa-edit fa-fw"></i>
+                                                    Edit
                                                 </button>
                                             </a>
+                                            {{-- <a href="{{ route('project-result', $pr->id_project) }}">
+                                                <button class="btn btn-default">
+                                                    <i class="fa fa-cog fa-fw"></i>
+                                                    Buat Laporan
+                                                </button>
+                                            </a> --}}
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
