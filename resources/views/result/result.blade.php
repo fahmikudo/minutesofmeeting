@@ -131,11 +131,15 @@
         }
 
     </style>
-    
+
 </head>
 <body class="container">
     <div class="card">
-        <div class="card-header" style="text-align: center;">
+        <div class="card-header" style="text-align: left;">
+            <?php $image_path = '/img/logo.png'; ?>
+            <img src="{{ public_path() . $image_path }}">
+        </div>
+        <div class="card-header" style="text-align: right;">
             <h1>Minutes of Meeting</h1>
             <h2>
                 {{ $project[0]->nama_project }}
@@ -202,7 +206,7 @@
         <div class="card-body">
             <h4>Pokok Bahasan</h4>
             <p>
-                Berikut adalah pokok bahasan yang dibahas dan 
+                Berikut adalah pokok bahasan yang dibahas dan
                 dirangkum dalam beberapa poin-poin bahasan
                 sebagai berikut:
             </p>
@@ -237,7 +241,7 @@
                                     @foreach ($detailPokokBahasan as $dpb)
                                         <li>
                                             {{ $dpb->detail_pokok_bahasan }}
-                                        </li>   
+                                        </li>
                                     @endforeach
                                 </ul>
                             </td>
