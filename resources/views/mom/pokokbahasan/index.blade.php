@@ -11,7 +11,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-group fa-fw"></i> nama meeting
+                    <i class="fa fa-group fa-fw"></i> Meeting
                 </div>
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
@@ -67,10 +67,10 @@
                                                     </a>
                                                     <form id="deletePokokBahasan{{ $dt->id_pokok_bahasan }}" action="{{ route('pokok-bahasan-remove', $id) }}" method="POST" style="display: none;">
                                                         {{ csrf_field() }}
-                                                        <input 
-                                                            type="hidden" 
-                                                            value="{{ $dt->id_pokok_bahasan }}" 
-                                                            name="id-pokok-bahasan" 
+                                                        <input
+                                                            type="hidden"
+                                                            value="{{ $dt->id_pokok_bahasan }}"
+                                                            name="id-pokok-bahasan"
                                                             id="id-pokok-bahasan">
                                                     </form>
                                                     <a href="{{ route('pokok-bahasan-remove', $id) }}" onclick="event.preventDefault();
@@ -136,7 +136,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <input type="hidden" name="id-pokok-bahasan" id="edit-id-pokok-bahasan">
-                                        
+
                                         <label for="no">Nomor</label>
                                         <input
                                             type="text"

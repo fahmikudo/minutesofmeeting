@@ -54,12 +54,24 @@
                                                     Edit
                                                 </button>
                                             </a>
-                                            {{-- <a href="{{ route('project-result', $pr->id_project) }}">
-                                                <button class="btn btn-default">
-                                                    <i class="fa fa-cog fa-fw"></i>
-                                                    Buat Laporan
+                                            <form
+                                                id="deleteProject{{ $pr->id_project }}"
+                                                action="{{ route('project-remove') }}"
+                                                method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
+                                                <input
+                                                    type="hidden"
+                                                    value="{{ $pr->id_project }}"
+                                                    name="id-project-remove"
+                                                    id="id-project-remove">
+                                            </form>
+                                            <a href="{{ route('project-remove') }}" onclick="event.preventDefault();
+                                                document.getElementById('deleteProject'+{{ $pr->id_project }}).submit();">
+                                                <button class="btn btn-danger">
+                                                    <i class="fa fa-trash fa-fw"></i>Delete
                                                 </button>
-                                            </a> --}}
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

@@ -11,7 +11,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-group fa-fw"></i> nama meeting
+                    <i class="fa fa-group fa-fw"></i> Meeting
                 </div>
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
@@ -23,8 +23,8 @@
                 </div>
                 <div class="panel-body top-operation">
                     <label for="image">Pilih Gambar</label>
-                    <form 
-                        enctype="multipart/form-data" 
+                    <form
+                        enctype="multipart/form-data"
                         method="POST"
                         action="{{ route('gallery-publish', $id) }}">
                         @csrf
@@ -35,7 +35,7 @@
                         </div>
                         <button class="btn btn-sm btn-primary pull-right" type="submit">
                             <i class="fa fa-plus-circle"></i>
-                            Tambah 
+                            Tambah
                         </button>
                     </form>
                 </div>
@@ -56,7 +56,7 @@
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>
-                                            <div 
+                                            <div
                                                 class="image"
                                                 style="
                                                     background-image: url({{ asset('/img/gallery/thumbnails/'.$img->gambar) }});
@@ -64,16 +64,16 @@
                                         </td>
                                         <td>{{ $img->created_at }}</td>
                                         <td class="text-right">
-                                            <form 
-                                                id="deleteGallery{{ $img->id_gallery }}" 
-                                                action="{{ route('gallery-remove', $id) }}" 
-                                                method="POST" 
+                                            <form
+                                                id="deleteGallery{{ $img->id_gallery }}"
+                                                action="{{ route('gallery-remove', $id) }}"
+                                                method="POST"
                                                 style="display: none;">
                                                 {{ csrf_field() }}
-                                                <input 
-                                                    type="hidden" 
-                                                    value="{{ $img->id_gallery }}" 
-                                                    name="id-gallery" 
+                                                <input
+                                                    type="hidden"
+                                                    value="{{ $img->id_gallery }}"
+                                                    name="id-gallery"
                                                     id="id-gallery">
                                             </form>
                                             <a href="{{ route('gallery-remove', $id) }}" onclick="event.preventDefault();

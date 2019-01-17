@@ -31,7 +31,7 @@
     <link href="{{ asset('css/faza.css') }}" rel="stylesheet"/>
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"/>
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" type="image/x-icon"/>
-    
+
     <style>
         .image {
             position: relative;
@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Minutes of Meeting</a>
+                <a class="navbar-brand" href="{{ route('home') }}">Minutes of Meeting</a>
             </div>
         @include('layouts/menu')
             <ul class="nav navbar-top-links navbar-right">
@@ -62,7 +62,7 @@
                         Profile
                     </a>
                 </li> --}}
-                
+
                 <li class="pull-left" title="Logout">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
@@ -71,10 +71,9 @@
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="fa fa-power-off fa-lg" style="margin-top: 10px;"></i>
-                        Logout
                     </a>
                 </li>
-                    
+
             </ul>
         </nav>
         <main class="py-4">

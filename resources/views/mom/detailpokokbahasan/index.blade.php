@@ -11,7 +11,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-group fa-fw"></i> nama meeting
+                    <i class="fa fa-group fa-fw"></i> Meeting4
                 </div>
                 <div class="panel-body">
                     {{-- <ul class="nav nav-tabs">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel-body">
                     <div class="table-responsive table-data">
                         <table class="table table-hover">
@@ -65,16 +65,16 @@
                                                     <i class="fa fa-edit fa-fw"></i>Edit
                                                 </button>
                                             </a>
-                                            <form 
-                                                id="deleteDetailPokokBahasan{{ $dt->id_detail_pokok_bahasan }}" 
-                                                action="{{ route('detail-pokok-bahasan-remove', [$id, $idPokokBahasan]) }}" 
-                                                method="POST" 
+                                            <form
+                                                id="deleteDetailPokokBahasan{{ $dt->id_detail_pokok_bahasan }}"
+                                                action="{{ route('detail-pokok-bahasan-remove', [$id, $idPokokBahasan]) }}"
+                                                method="POST"
                                                 style="display: none;">
                                                 {{ csrf_field() }}
-                                                <input 
-                                                    type="hidden" 
-                                                    value="{{ $dt->id_detail_pokok_bahasan }}" 
-                                                    name="id-detail-pokok-bahasan-remove" 
+                                                <input
+                                                    type="hidden"
+                                                    value="{{ $dt->id_detail_pokok_bahasan }}"
+                                                    name="id-detail-pokok-bahasan-remove"
                                                     id="id-detail-pokok-bahasan-remove">
                                             </form>
                                             <a href="{{ route('detail-pokok-bahasan-remove', [$id, $idPokokBahasan]) }}" onclick="event.preventDefault();

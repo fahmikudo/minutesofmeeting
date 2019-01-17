@@ -2,7 +2,7 @@
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="{{ route('home') }}"><i class="fa fa-home fa-fw"></i> Dashboard </a>
+                <a href="{{ route('home') }}"><i class="fa fa-home fa-fw"></i> Profile </a>
             </li>
             <li>
                 <a href="{{ route('user-index') }}"><i class="fa fa-users fa-fw"></i> Users </a>

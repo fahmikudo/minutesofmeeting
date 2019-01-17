@@ -47,7 +47,7 @@
                                     <td>{{ $mt->kesimpulan }}</td>
                                     <td class="text-right">
                                         <a class="detail-info" href="#">
-                                            <button 
+                                            <button
                                                 class="btn btn-primary"
                                                 onclick="editModal('{{ $mt->id_mom }}')"
                                                 data-toggle="modal"
@@ -60,6 +60,24 @@
                                             <button class="btn btn-default">
                                                 <i class="fa fa-cogs fa-fw"></i>
                                                 Manage
+                                            </button>
+                                        </a>
+                                        <form
+                                            id="deleteMom{{ $mt->id_mom }}"
+                                            action="{{ route('mom-remove') }}"
+                                            method="POST"
+                                            style="display: none;">
+                                            {{ csrf_field() }}
+                                            <input
+                                                type="hidden"
+                                                value="{{ $mt->id_mom }}"
+                                                name="id-mom-remove"
+                                                id="id-mom-remove">
+                                        </form>
+                                        <a href="{{ route('mom-remove') }}" onclick="event.preventDefault();
+                                            document.getElementById('deleteMom'+{{ $mt->id_mom }}).submit();">
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-trash fa-fw"></i>Delete
                                             </button>
                                         </a>
                                     </td>
@@ -121,7 +139,7 @@
                             @csrf
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Tambah MoM</h4>
+                                <h4 class="modal-title">Edit MoM</h4>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -130,9 +148,9 @@
                                     <label for="selectProject">Pilih Project</label>
                                     <select class="form-control" name="id-project" id="sel1">
                                         @foreach ($project as $pr)
-                                            <option 
+                                            <option
                                                 value="{{ $pr->id_project }}"
-                                                class="project" 
+                                                class="project"
                                                 id="project-{{ $pr->id_project }}">{{ $pr->nama_project }}</option>
                                         @endforeach
                                     </select>

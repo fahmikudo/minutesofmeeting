@@ -11,7 +11,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-group fa-fw"></i> nama meeting
+                    <i class="fa fa-group fa-fw"></i> Meeting
                 </div>
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
