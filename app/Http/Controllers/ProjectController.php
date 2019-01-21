@@ -70,7 +70,7 @@ class ProjectController extends Controller
         }
         else
         {
-            return redirect(route('errors/404'));
+            return redirect('remove not found');
         }
     }
     public function search()
