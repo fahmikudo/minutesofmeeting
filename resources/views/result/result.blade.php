@@ -18,33 +18,36 @@
             margin: 0;
             border: 0;
             outline: none;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         h1, h2, h3 {
-            color: rgba(0,0,0,0.64);
+            color: rgba(0,0,0,0.84);
             line-height: 1.5;
         }
         h4 {
             line-height: 1.5;
-            color: rgba(0,0,0,0.64);
+            color: rgba(0,0,0,0.84);
             font-size: 14pt;
             margin: 15px 0;
         }
 
         p {
             line-height: 1.5;
-            color: rgba(0,0,0,0.54);
+            color: rgba(0,0,0,0.64);
             font-size: 10pt;
         }
 
         .place-image {
             position: relative;
             width: 100%;
-            display: flex;
+            padding-top: 15px;
+            /* display: flex; */
         }
-        .place-image img {
-            width: calc(33.33% - 30px);
+        .place-image .image {
+            position: relative;
+            display: inline-block;
+            width: 250px;
             border-radius: 10px;
             margin: 15px;
         }
@@ -96,7 +99,7 @@
             padding: 15px;
             font-size: 10pt;
             font-weight: 500;
-            color: rgba(0,0,0,0.64);
+            color: rgba(0,0,0,0.84);
             border: 1px rgba(0,0,0,0.1) solid;
         }
 
@@ -119,7 +122,15 @@
         }
 
         .card-header {
-            margin: 15px 0;
+            position: relative;
+            width: 50%;
+            margin: 15px -2px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .logo {
+            position: relative;
+            top: 15px;
         }
 
         .card-body {
@@ -137,7 +148,9 @@
     <div class="card">
         <div class="card-header" style="text-align: left;">
             <?php $image_path = '/img/logo.png'; ?>
-            <img src="{{ public_path() . $image_path }}">
+            <img 
+                src="{{ public_path() . $image_path }}"
+                style="margin-top: 30px;">
         </div>
         <div class="card-header" style="text-align: right;">
             <h1>Minutes of Meeting</h1>
@@ -258,8 +271,8 @@
             <h4>Galeri</h4>
             <div class="place-image">
                 @foreach ($gallery as $gl)
-                    {{-- <img src="{{ asset('img/gallery/covers/'.$gl->gambar) }}" class="image" alt="image"> --}}
-                    <img src="{{ '/img/gallery/covers/'.$gl->gambar }}" class="image" alt="image">
+                    <?php $image_path = public_path() . '/img/gallery/covers/'; ?>
+                    <img src="{{ $image_path . $gl->gambar }}" class="image" alt="image">
                 @endforeach
             </div>
         </div>
