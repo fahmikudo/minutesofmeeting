@@ -70,6 +70,24 @@
                                                     <i class="fa fa-edit fa-fw"></i>Edit
                                                 </button>
                                             </a>
+                                            <form
+                                                id="deleteUser{{ $us->id }}"
+                                                action="{{ route('user-remove') }}"
+                                                method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
+                                                <input
+                                                    type="hidden"
+                                                    value="{{ $us->id }}"
+                                                    name="id-user-remove"
+                                                    id="id-user-remove">
+                                            </form>
+                                            <a href="{{ route('user-remove') }}" onclick="event.preventDefault();
+                                                document.getElementById('deleteUser'+{{ $us->id }}).submit();">
+                                                <button class="btn btn-danger">
+                                                    <i class="fa fa-trash fa-fw"></i>Delete
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

@@ -61,7 +61,7 @@ class UserController extends Controller
     }
     public function remove(Request $request)
     {
-        $id = $request['id-user'];
+        $id = $request['id-user-remove'];
         $rest = User::Remove($id);
         if ($rest)
         {
