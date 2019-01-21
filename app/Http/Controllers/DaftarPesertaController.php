@@ -35,6 +35,9 @@ class DaftarPesertaController extends Controller
             'absen' => $absensi
         ];
         //echo json_encode($data);
+        $this->validate($request, [
+            'absen' => 'required|integer',
+        ]);
 
         $rest = DaftarPeserta::Add($data);
 
