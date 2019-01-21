@@ -9,7 +9,7 @@ class DaftarPesertaController extends Controller
 {
     public function index($id)
     {
-        $data = DaftarPeserta::paginate(5);
+        $data = DaftarPeserta::where('id_daftar_peserta', $id)->paginate(5);
         return view('mom.daftarpeserta.index', [
             'id' => $id,
             'data' => $data

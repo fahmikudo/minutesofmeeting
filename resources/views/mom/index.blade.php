@@ -35,7 +35,7 @@
                                     <th width="120">Tanggal Waktu</th>
                                     <th>Lokasi</th>
                                     <th>Kesimpulan</th>
-                                    <th width="200" class="text-right"></th>
+                                    <th width="300" class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody>

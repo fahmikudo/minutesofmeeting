@@ -62,7 +62,7 @@ class ProjectController extends Controller
     }
     public function remove(Request $request)
     {
-        $id = $request['id-project'];
+        $id = $request['id-project-remove'];
         $rest = Project::Remove($id);
         if ($rest)
         {

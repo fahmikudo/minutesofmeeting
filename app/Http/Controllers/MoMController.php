@@ -130,7 +130,7 @@ class MoMController extends Controller
 
     public function remove(Request $request)
     {
-        $id = $request['id-mom'];
+        $id = $request['id-mom-remove'];
         $rest = MoM::Remove($id);
         if ($rest) {
             return redirect(route('mom-index'));
