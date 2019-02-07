@@ -9,7 +9,8 @@ class DaftarPesertaController extends Controller
 {
     public function index($id)
     {
-        $data = DaftarPeserta::where('id_daftar_peserta', $id)->paginate(5);
+        $data = DaftarPeserta::where('id_mom', $id)->paginate(5);
+        // dd($data);
         return view('mom.daftarpeserta.index', [
             'id' => $id,
             'data' => $data
@@ -34,12 +35,15 @@ class DaftarPesertaController extends Controller
             'instansi' => $instansi,
             'absen' => $absensi
         ];
-        //echo json_encode($data);
-        $this->validate($request, [
-            'absen' => 'required|integer',
-        ]);
 
-        $rest = DaftarPeserta::Add($data);
+        //echo json_encode($data);
+        // $cek = $this->validate($request, [
+        //     'absen' => 'required',
+        // ]);
+
+        $rest = DaftarPeserta::insert($data);
+
+        // dd($rest);
 
         if ($rest)
         {

@@ -8,6 +8,8 @@ class DaftarPeserta extends Model
 {
     protected $table = "daftar_peserta";
 
+    protected $primaryKey = "id_daftar_peserta";
+
     public function scopeGet($query)
     {
         return $this->get();
